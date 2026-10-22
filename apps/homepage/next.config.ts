@@ -3,7 +3,7 @@ import path from 'node:path'
 import { readFileSync, existsSync } from 'node:fs'
 
 // Keep the site's version badge in lock-step with the published library.
-let appVersion = '0.1.0'
+let appVersion = '0.1.1'
 const libPkgPath = path.resolve(__dirname, '../../packages/html-shutter/package.json')
 if (existsSync(libPkgPath)) {
   try {

@@ -1,6 +1,6 @@
 {
   "name": "html-shutter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Framework-agnostic PNG screenshots of any HTML element — clone the DOM, inline computed styles, rasterize via SVG, and export data URLs or file downloads. Optional React bindings.",
   "type": "module",
   "sideEffects": false,
