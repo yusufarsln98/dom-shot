@@ -1,31 +1,29 @@
-# dom-shot
+# html-shutter
 
 > Capture any HTML element as a pixel-accurate PNG screenshot — a pure, framework-agnostic core with an optional React hook. Clone the DOM, inline computed styles, rasterize via SVG, and export data URLs or file downloads.
 
 ## Why
 
-Browser-native element screenshots live behind `html2canvas`-style line-by-line re-implementations, pull in big dependencies, or lose fidelity on complex trees (masks, pseudo-elements, canvases, form values, scroll positions). `dom-shot` instead uses a **clone → inline → SVG `foreignObject` → canvas** pipeline that leans on the browser's own layout engine, keeping the capture faithful with zero runtime dependencies. It is a distilled, dependency-free version of the capture utility used in production dashboards (Odak), so it can drop in there with the same behavior.
+Browser-native element screenshots live behind `html2canvas`-style line-by-line re-implementations, pull in big dependencies, or lose fidelity on complex trees (masks, pseudo-elements, canvases, form values, scroll positions). `html-shutter` instead uses a **clone → inline → SVG `foreignObject` → canvas** pipeline that leans on the browser's own layout engine, keeping the capture faithful with zero runtime dependencies. It is a distilled, dependency-free version of the capture utility used in production dashboards (Odak), so it can drop in there with the same behavior.
 
 ## Structure & subpath exports
 
 One package, two import surfaces behind a Node `exports` map:
-dom-shot
+
 | Import | Surface | Requires React? |
-| --- | -dom-shot
-| `dom-shot` (or `dom-shot/core`) | Framework-agnostic core: `captureElementToPngDataUrl`, `previewElementAsImage`, `downloadElementAsImage`, `copyElementToClipboard`, `CaptureElementOptions`, `VERSION` | No |
-| `dom-shot/react` | `useElementCapture` hook + `UseElementCaptureOptions` / `UseElementCaptureReturn` | optional peer |
+| --- | --- | --- |
+| `html-shutter` (or `html-shutter/core`) | Framework-agnostic core: `captureElementToPngDataUrl`, `previewElementAsImage`, `downloadElementAsImage`, `copyElementToClipboard`, `CaptureElementOptions`, `VERSION` | No |
+| `html-shutter/react` | `useElementCapture` hook + `UseElementCaptureOptions` / `UseElementCaptureReturn` | optional peer |
 
 - `src/core/` — the DOM/canvas pipeline (cloning, style inlining, SVG rasterization, exporting). **Zero imports from React or any UI framework**, so it runs in vanilla JS, Vue, Svelte, Angular, or a plain `<script type="module">`.
 - `src/react/` — a thin hook wrapper that manages ref attachment and transient capture state on top of the same core functions.
 
 ## Install
 
-dom-shot
-
 ```bash
-npm install dom-shot
+npm install html-shutter
 # or
-pnpm add dom-shot
+pnpm add html-shutter
 # React users only:
 pnpm add react
 ```
@@ -40,7 +38,7 @@ import {
   previewElementAsImage,
   downloadElementAsImage,
   copyElementToClipboard,
-} from 'dom-shot'
+} from 'html-shutter'
 
 const card = document.querySelector<HTMLElement>('#my-card')!
 
@@ -56,7 +54,7 @@ const dataUrl = await captureElementToPngDataUrl(card, {
 const preview = await previewElementAsImage(card)
 // preview.dataUrl · preview.bytes · preview.cssWidth
 
-// 3) Trigger a file download directlydom-shot
+// 3) Trigger a file download directly
 await downloadElementAsImage(card, { fileName: 'my-card' })
 
 // 4) Or copy the PNG image to the clipboard (falls back to the data URL as text)
@@ -66,7 +64,31 @@ const ok = await copyElementToClipboard(card)
 ## Quick start (React hook)
 
 ```tsx
-import { useElementCapture } from 'dom-shot/react'
+import { useElementCapture } from 'html-shutter/react'
+
+export function ExportCard() {
+  const { ref, download, copy, preview, isCapturing } = useElementCapture<HTMLDivElement>({
+    fileName: 'analytics-export',
+    pixelRatio: 2,
+  })
+
+  return (
+    <div>
+      <div ref={ref}>...</div>
+      <button onClick={() => download()} disabled={isCapturing}>
+        Download PNG
+      </button>
+      <button onClick={() => copy()} disabled={isCapturing}>
+        Copy to clipboard
+      </button>
+    </div>
+  )
+}
+```
+
+## License
+
+MIT © Yusuf Arslan
 
 function DashboardCard() {
   // Three user-facing actions: preview the PNG, download the file, copy the image.

@@ -35,6 +35,6 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: npm run release --workspace=dom-shot
+          publish: npm run release --workspace=html-shutter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
