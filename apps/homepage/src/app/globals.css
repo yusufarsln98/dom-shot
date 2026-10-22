@@ -1,0 +1,226 @@
+@import 'tailwindcss';
+@import '../styles/prism.css';
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   dom-shot brand — colors, fonts, and logo geometry come straight from the
+   official brand kit (“react-screenshot Brand Kit”):
+
+   Palette   Ink #0B1020 · Lens #4FD8F5 · Deep Lens #0891B2 · Flash #FFC24B
+             Paper #F5F7FB · Hairline #DDE3EE · Muted #4A5568
+   Type      Space Grotesk — headings & wordmark
+             JetBrains Mono — code & docs
+   Logo      A 3×3 pixel grid that fills in like a rendered image; the amber
+             pixel is the shutter flash.
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Vendored brand fonts (variable woff2, latin subset) ──────────────────── */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── Theme mapping (Tailwind utilities resolve through these) ────────────── */
+
+@theme {
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --color-ink: var(--ds-ink);
+  --color-paper: var(--ds-paper);
+  --color-lens: var(--ds-lens);
+  --color-deep-lens: var(--ds-deep-lens);
+  --color-flash: var(--ds-flash);
+  --color-panel: var(--ds-panel);
+  --color-line: var(--ds-line);
+  --color-muted: var(--ds-muted);
+  --color-lens-contrast: var(--ds-lens-contrast);
+}
+
+:root {
+  color-scheme: dark light;
+
+  /* Brand palette follows the system scheme:
+     light → paper with Deep Lens cyan · dark → Ink with Lens cyan */
+  --ds-ink: light-dark(#0b1020, #f5f7fb);
+  --ds-paper: light-dark(#f5f7fb, #0b1020);
+  --ds-lens: light-dark(#0891b2, #4fd8f5);
+  --ds-deep-lens: light-dark(#0891b2, #4fd8f5);
+  --ds-flash: #ffc24b;
+  --ds-panel: light-dark(#ffffff, #121826);
+  --ds-line: light-dark(#dde3ee, #232c42);
+  --ds-muted: light-dark(#4a5568, #8b95ad);
+  --ds-lens-contrast: light-dark(#ffffff, #0b1020);
+}
+
+html.dark {
+  color-scheme: dark;
+  --ds-ink: #f5f7fb;
+  --ds-paper: #0b1020;
+  --ds-lens: #4fd8f5;
+  --ds-deep-lens: #4fd8f5;
+  --ds-panel: #121826;
+  --ds-line: #232c42;
+  --ds-muted: #8b95ad;
+  --ds-lens-contrast: #0b1020;
+}
+
+html.light {
+  color-scheme: light;
+  --ds-ink: #0b1020;
+  --ds-paper: #f5f7fb;
+  --ds-lens: #0891b2;
+  --ds-deep-lens: #0891b2;
+  --ds-panel: #ffffff;
+  --ds-line: #dde3ee;
+  --ds-muted: #4a5568;
+  --ds-lens-contrast: #ffffff;
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  body {
+    background-color: var(--ds-paper);
+    color: var(--ds-ink);
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--ds-lens) 30%, transparent);
+  }
+}
+
+/* ── Decorative utilities ─────────────────────────────────────────────────── */
+
+@layer utilities {
+  /* Faint graph-paper dot grid, used behind the hero */
+  .bg-graph {
+    background-image: radial-gradient(color-mix(in srgb, currentColor 14%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Micro millimeter technical ruler strip */
+  .bg-ruler {
+    background-image:
+      repeating-linear-gradient(to right, var(--ds-line) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(to right, var(--ds-line) 0 1px, transparent 1px 8px);
+    background-size: 100% 8px, 100% 4px;
+    background-repeat: repeat-x;
+  }
+
+  /* Wordmark hyphen (brand voice: the “-” of “dom-shot” is drawn in Lens cyan) */
+  .wordmark-hyphen {
+    color: var(--ds-lens);
+  }
+
+  /* Optical transparency checkerboard */
+  .bg-checkerboard {
+    background-image:
+      linear-gradient(45deg, color-mix(in srgb, var(--ds-muted) 12%, transparent) 25%, transparent 25%),
+      linear-gradient(-45deg, color-mix(in srgb, var(--ds-muted) 12%, transparent) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, color-mix(in srgb, var(--ds-muted) 12%, transparent) 75%),
+      linear-gradient(-45deg, transparent 75%, color-mix(in srgb, var(--ds-muted) 12%, transparent) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  }
+}
+
+/* ── Viewfinder Aperture Marks & Shutter Flash ─────────────────────────────── */
+
+.viewfinder-plate {
+  position: relative;
+}
+
+.viewfinder-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  border-color: var(--ds-lens);
+  opacity: 0.6;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.viewfinder-plate:hover .viewfinder-corner {
+  opacity: 1;
+  border-color: var(--ds-flash);
+}
+
+.viewfinder-corner-tl {
+  top: 6px;
+  left: 6px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.viewfinder-corner-tr {
+  top: 6px;
+  right: 6px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.viewfinder-corner-bl {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+
+.viewfinder-corner-br {
+  bottom: 6px;
+  right: 6px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+/* Shutter flash burst */
+@keyframes shutter-burst {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.shutter-flash-overlay {
+  animation: shutter-burst 0.35s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+/* ── Pixel-grid logo animation ────────────────────────────────────────────── */
+
+/* Cells fade in like a rendering image. `.pixel-anim` opts a grid into it.
+   Each cell's resting opacity is its inline `opacity` (the brand matrix);
+   the animation only overrides the `from` state. */
+.pixel-anim .pixel-cell {
+  animation: pixel-in 0.6s ease-out backwards;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes pixel-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-anim .pixel-cell {
+    animation: none;
+  }
+}

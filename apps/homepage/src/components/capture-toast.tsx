@@ -1,0 +1,84 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { Camera, Download, Copy, Check } from 'lucide-react'
+
+export interface CaptureToastData {
+  id: string
+  type: 'copy' | 'download'
+  title: string
+  elapsedMs?: number
+}
+
+const TOAST_EVENT = 'dom-shot-toast'
+
+export function showCaptureToast(data: Omit<CaptureToastData, 'id'>) {
+  if (typeof window === 'undefined') return
+  const toastItem: CaptureToastData = {
+    ...data,
+    id: `${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+  }
+  window.dispatchEvent(new CustomEvent(TOAST_EVENT, { detail: toastItem }))
+}
+
+export function CaptureToastContainer() {
+  const [toasts, setToasts] = useState<CaptureToastData[]>([])
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const customEvent = e as CustomEvent<CaptureToastData>
+      if (!customEvent.detail) return
+      setToasts((prev) => [...prev.slice(-2), customEvent.detail])
+
+      setTimeout(() => {
+        setToasts((prev) => prev.filter((t) => t.id !== customEvent.detail.id))
+      }, 3200)
+    }
+
+    window.addEventListener(TOAST_EVENT, handler)
+    return () => window.removeEventListener(TOAST_EVENT, handler)
+  }, [])
+
+  if (toasts.length === 0) return null
+
+  return (
+    <aside
+      aria-label="Capture notifications"
+      className="no-export fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none max-w-sm w-full px-4 sm:px-0"
+      data-no-export="true"
+    >
+      {toasts.map((toast) => (
+        <div
+          key={toast.id}
+          className="pointer-events-auto flex items-center justify-between gap-3 px-4 py-3 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)]/95 backdrop-blur-md shadow-xl text-xs font-mono text-[var(--ds-ink)] animate-in fade-in slide-in-from-bottom-3 duration-200"
+        >
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-7 h-7 rounded-lg border border-[var(--ds-line)] bg-[var(--ds-paper)] flex items-center justify-center shrink-0 text-[var(--ds-lens)]">
+              {toast.type === 'copy' ? <Copy size={14} /> : <Download size={14} />}
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 font-bold truncate">
+                <Check size={12} className="text-emerald-500 shrink-0" />
+                <span className="truncate">
+                  {toast.type === 'copy' ? 'Copied to clipboard' : 'PNG downloaded'}
+                </span>
+              </div>
+              <div className="text-[11px] text-[var(--ds-muted)] truncate flex items-center gap-1.5">
+                <span className="truncate">{toast.title}</span>
+                {toast.elapsedMs !== undefined && (
+                  <span className="text-[var(--ds-flash)] shrink-0 font-semibold">
+                    ({toast.elapsedMs}ms)
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-1 text-[10px] text-[var(--ds-lens)] shrink-0 pl-2">
+            <Camera size={11} />
+            <span>dom-shot</span>
+          </div>
+        </div>
+      ))}
+    </aside>
+  )
+}
