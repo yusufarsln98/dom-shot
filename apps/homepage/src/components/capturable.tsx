@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { useElementCapture } from 'dom-shot/react'
+import { useElementCapture } from 'html-shutter/react'
 import { Camera, Copy, Download, Check, AlertCircle, Loader2 } from 'lucide-react'
 import { ViewfinderFrame } from './viewfinder-frame'
 import { showCaptureToast } from './capture-toast'

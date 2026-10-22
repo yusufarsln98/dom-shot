@@ -26,7 +26,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2.5 group">
           <PixelGrid size={28} className="pixel-anim text-[var(--ds-lens)] group-hover:scale-105 transition-transform" />
           <span className="font-sans font-bold text-xl tracking-tight text-[var(--ds-ink)]">
-            dom<span className="text-[var(--ds-lens)]">-</span>shot
+            html<span className="text-[var(--ds-lens)]">-</span>shutter
           </span>
           <span className="ml-1 text-[11px] font-mono px-1.5 py-0.5 rounded border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)]">
             v{appVersion}
@@ -56,7 +56,7 @@ export function Navbar() {
         {/* Actions (GitHub, NPM, Theme toggle) */}
         <div className="hidden sm:flex items-center gap-2.5">
           <a
-            href="https://github.com/yusufarsln98/dom-shot"
+            href="https://github.com/yusufarsln98/html-shutter"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub Repository"
@@ -65,7 +65,7 @@ export function Navbar() {
             <GitHubIcon size={16} />
           </a>
           <a
-            href="https://www.npmjs.com/package/dom-shot"
+            href="https://www.npmjs.com/package/html-shutter"
             target="_blank"
             rel="noreferrer"
             aria-label="NPM Package"
@@ -126,7 +126,7 @@ export function Navbar() {
           })}
           <div className="pt-2 border-t border-[var(--ds-line)] flex gap-3">
             <a
-              href="https://github.com/yusufarsln98/dom-shot"
+              href="https://github.com/yusufarsln98/html-shutter"
               target="_blank"
               rel="noreferrer"
               className="text-xs text-[var(--ds-muted)] flex items-center gap-1 hover:text-[var(--ds-ink)]"
@@ -134,7 +134,7 @@ export function Navbar() {
               <GitHubIcon size={14} /> GitHub <ArrowUpRight size={12} />
             </a>
             <a
-              href="https://www.npmjs.com/package/dom-shot"
+              href="https://www.npmjs.com/package/html-shutter"
               target="_blank"
               rel="noreferrer"
               className="text-xs text-[var(--ds-muted)] flex items-center gap-1 hover:text-[var(--ds-ink)]"

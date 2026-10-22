@@ -1,4 +1,4 @@
-# dom-shot
+# html-shutter
 
 ## 0.1.0
 

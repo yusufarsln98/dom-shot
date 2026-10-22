@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PixelGrid } from '../../../components/pixel-grid'
 import { Capturable } from '../../../components/capturable'
 import {
   Camera,
@@ -21,13 +20,13 @@ export function HeroSection() {
   const appVersion = process.env.NEXT_PUBLIC_APP_VERSION || '0.1.0'
 
   const handleCopyInstall = () => {
-    navigator.clipboard.writeText('npm install dom-shot')
+    navigator.clipboard.writeText('npm install html-shutter')
     setCopiedInstall(true)
     setTimeout(() => setCopiedInstall(false), 2000)
   }
 
   return (
-    <section className="w-full relative overflow-hidden pt-14 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[var(--ds-line)] bg-graph">
+    <section className="w-full relative overflow-hidden pt-14 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[var(--ds-line)]">
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center space-y-8">
         {/* Cartouche Status Bar */}
         <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-1.5 rounded-full border border-[var(--ds-line)] bg-[var(--ds-panel)] text-xs font-mono text-[var(--ds-muted)] shadow-xs">
@@ -77,7 +76,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-ink)] font-mono text-xs hover:border-[var(--ds-lens)]/60 transition-colors cursor-pointer shadow-xs"
           >
             <Terminal size={14} className="text-[var(--ds-lens)]" />
-            <span>npm i dom-shot</span>
+            <span>npm i html-shutter</span>
             {copiedInstall ? (
               <Check size={14} className="text-[var(--ds-lens)]" />
             ) : (

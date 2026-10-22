@@ -1,24 +1,24 @@
 {
-  "name": "dom-shot-monorepo",
+  "name": "html-shutter-monorepo",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "workspaces": [
-    "packages/dom-shot",
+    "packages/html-shutter",
     "apps/homepage"
   ],
   "scripts": {
     "build": "npm run build:lib && npm run build:homepage",
-    "dev:lib": "npm run dev --workspace=dom-shot",
+    "dev:lib": "npm run dev --workspace=html-shutter",
     "dev:homepage": "npm run dev --workspace=homepage",
     "preview:homepage": "npm run preview --workspace=homepage",
-    "build:lib": "npm run build --workspace=dom-shot",
+    "build:lib": "npm run build --workspace=html-shutter",
     "build:homepage": "npm run build --workspace=homepage",
-    "lint:lib": "npm run lint --workspace=dom-shot",
-    "test": "npm run test --workspace=dom-shot",
-    "test:lib": "npm run test --workspace=dom-shot",
+    "lint:lib": "npm run lint --workspace=html-shutter",
+    "test": "npm run test --workspace=html-shutter",
+    "test:lib": "npm run test --workspace=html-shutter",
     "changeset": "changeset",
-    "typecheck:lib": "npm run typecheck --workspace=dom-shot",
+    "typecheck:lib": "npm run typecheck --workspace=html-shutter",
     "typecheck": "npm run typecheck:lib"
   },
   "devDependencies": {

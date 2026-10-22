@@ -1,5 +1,5 @@
 {
-  "name": "dom-shot",
+  "name": "html-shutter",
   "version": "0.1.0",
   "description": "Framework-agnostic PNG screenshots of any HTML element — clone the DOM, inline computed styles, rasterize via SVG, and export data URLs or file downloads. Optional React bindings.",
   "type": "module",
@@ -54,11 +54,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yusufarsln98/dom-shot.git",
-    "directory": "packages/dom-shot"
+    "url": "git+https://github.com/yusufarsln98/html-shutter.git",
+    "directory": "packages/html-shutter"
   },
   "bugs": {
-    "url": "https://github.com/yusufarsln98/dom-shot/issues"
+    "url": "https://github.com/yusufarsln98/html-shutter/issues"
   },
   "publishConfig": {
     "access": "public",

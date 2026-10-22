@@ -13,7 +13,7 @@ export const CODE_SAMPLES: CodeSample[] = [
     filename: 'WidgetExport.tsx',
     description:
       'Attach useElementCapture to any DOM node to provide reactive download, preview, and clipboard actions.',
-    code: `import { useElementCapture } from 'dom-shot/react'
+    code: `import { useElementCapture } from 'html-shutter/react'
 
 export function WidgetExport() {
   const { ref, preview, download, copy, isCapturing } = useElementCapture<HTMLDivElement>({
@@ -56,7 +56,7 @@ export function WidgetExport() {
   previewElementAsImage,
   downloadElementAsImage,
   captureElementToPngDataUrl,
-} from 'dom-shot'
+} from 'html-shutter'
 
 // Locate target DOM node in document
 const element = document.getElementById('analytics-viewport')
@@ -82,7 +82,7 @@ if (element) {
     filename: 'clipboard-export.ts',
     description:
       'Writes PNG images directly to the operating system clipboard via ClipboardItem for instant pasting into Slack, Figma, or Notion.',
-    code: `import { copyElementToClipboard } from 'dom-shot'
+    code: `import { copyElementToClipboard } from 'html-shutter'
 
 export async function copyChartToClipboard(targetNode: HTMLElement): Promise<boolean> {
   try {
@@ -107,7 +107,7 @@ export async function copyChartToClipboard(targetNode: HTMLElement): Promise<boo
     filename: 'SecureDashboard.tsx',
     description:
       'Omit interactive buttons, debug tags, and sensitive PII from exported PNGs using built-in skip classes.',
-    code: `import { useElementCapture } from 'dom-shot/react'
+    code: `import { useElementCapture } from 'html-shutter/react'
 
 export function SecureDashboard() {
   const { ref, download } = useElementCapture<HTMLDivElement>({

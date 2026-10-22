@@ -4,31 +4,31 @@ import { Capturable } from '../../../components/capturable'
 const COMPARISONS = [
   {
     feature: 'Bundle Size (Gzipped)',
-    domShot: '~4.8 KB',
+    htmlShutter: '~4.8 KB',
     html2canvas: '~48 KB',
     puppeteer: '> 150 MB (Node daemon)',
   },
   {
     feature: 'Execution Environment',
-    domShot: 'Pure Browser (Client-side)',
+    htmlShutter: 'Pure Browser (Client-side)',
     html2canvas: 'Pure Browser',
     puppeteer: 'Headless Chrome Server',
   },
   {
     feature: 'HTML5 Canvas Flattening',
-    domShot: 'Native Lossless toDataURL',
+    htmlShutter: 'Native Lossless toDataURL',
     html2canvas: 'Partial Re-drawing',
     puppeteer: 'Browser Screenshot',
   },
   {
     feature: 'System Clipboard Copy',
-    domShot: 'Built-in (ClipboardItem)',
+    htmlShutter: 'Built-in (ClipboardItem)',
     html2canvas: 'Manual blob conversion',
     puppeteer: 'Server-to-client stream',
   },
   {
     feature: 'CSS Variables & Pseudos',
-    domShot: 'Full Computed Inlining',
+    htmlShutter: 'Full Computed Inlining',
     html2canvas: 'Fragile parser emulation',
     puppeteer: 'Native Chrome Engine',
   },
@@ -43,7 +43,7 @@ export function ComparisonSection() {
           Benchmarking
         </div>
         <h2 className="text-3xl font-extrabold font-sans text-[var(--ds-ink)] tracking-tight">
-          Why dom-shot?
+          Why html-shutter?
         </h2>
         <p className="text-sm text-[var(--ds-muted)]">
           A surgical comparison against traditional canvas emulators and server-side browser engines.
@@ -51,7 +51,7 @@ export function ComparisonSection() {
       </div>
 
       <Capturable
-        fileName="dom-shot-comparison-benchmark"
+        fileName="html-shutter-comparison-benchmark"
         title="Comparison · Feature & Benchmark Table"
         className="rounded-2xl border border-[var(--ds-line)] bg-[var(--ds-panel)] shadow-xs overflow-hidden"
       >
@@ -60,7 +60,7 @@ export function ComparisonSection() {
             <thead className="border-b border-[var(--ds-line)] bg-[var(--ds-paper)] text-[var(--ds-muted)]">
               <tr>
                 <th className="py-3 px-4 font-semibold">Capability</th>
-                <th className="py-3 px-4 font-semibold text-[var(--ds-lens)]">dom-shot</th>
+                <th className="py-3 px-4 font-semibold text-[var(--ds-lens)]">html-shutter</th>
                 <th className="py-3 px-4 font-semibold">html2canvas</th>
                 <th className="py-3 px-4 font-semibold">Puppeteer</th>
               </tr>
@@ -69,7 +69,7 @@ export function ComparisonSection() {
               {COMPARISONS.map((row, idx) => (
                 <tr key={idx} className="hover:bg-[var(--ds-paper)]/50 transition-colors">
                   <td className="py-3.5 px-4 font-sans font-medium">{row.feature}</td>
-                  <td className="py-3.5 px-4 text-[var(--ds-lens)] font-bold">{row.domShot}</td>
+                  <td className="py-3.5 px-4 text-[var(--ds-lens)] font-bold">{row.htmlShutter}</td>
                   <td className="py-3.5 px-4 text-[var(--ds-muted)]">{row.html2canvas}</td>
                   <td className="py-3.5 px-4 text-[var(--ds-muted)]">{row.puppeteer}</td>
                 </tr>

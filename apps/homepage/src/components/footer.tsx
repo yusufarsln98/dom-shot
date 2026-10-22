@@ -23,7 +23,7 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-2 group">
               <PixelGrid size={24} color="lens" className="group-hover:scale-105 transition-transform" />
               <span className="font-sans font-bold text-lg text-[var(--ds-ink)]">
-                dom<span className="text-[var(--ds-lens)]">-</span>shot
+                html<span className="text-[var(--ds-lens)]">-</span>shutter
               </span>
             </Link>
             <p className="text-[var(--ds-muted)] text-xs leading-relaxed max-w-md">
@@ -84,7 +84,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs font-medium">
               <li>
                 <a
-                  href="https://github.com/yusufarsln98/dom-shot"
+                  href="https://github.com/yusufarsln98/html-shutter"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-[var(--ds-muted)] hover:text-[var(--ds-ink)] transition-colors group"
@@ -95,7 +95,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.npmjs.com/package/dom-shot"
+                  href="https://www.npmjs.com/package/html-shutter"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-[var(--ds-muted)] hover:text-[var(--ds-ink)] transition-colors group"
@@ -106,7 +106,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/yusufarsln98/dom-shot/blob/main/LICENSE"
+                  href="https://github.com/yusufarsln98/html-shutter/blob/main/LICENSE"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-[var(--ds-muted)] hover:text-[var(--ds-ink)] transition-colors group"
