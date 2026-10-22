@@ -23,7 +23,7 @@ This repository is structured as a monorepo modeled after the `react-leaflet-can
 │       ├── tsup.config.ts      # Dual CJS/ESM bundling + DTS generation
 │       └── tsconfig.json
 ├── apps/
-│   └── homepage/       # Official Next.js documentation and interactive demo
+│   └── homepage/       # Official Next.js documentation site
 ├── .changeset/         # Changeset versioning & release management
 └── .github/workflows/  # CI & automated release pipelines
 ```

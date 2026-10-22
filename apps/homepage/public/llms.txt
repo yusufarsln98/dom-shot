@@ -5,7 +5,7 @@
 `html-shutter` is a lightweight, dependency-free screenshot toolkit for web applications and dashboards. It creates an isolated clone of a target DOM subtree, inlines its computed styles through curated whitelists, flattens embedded HTML5 `<canvas>` bitmaps and SVG gradients, and rasterizes the tree via SVG `<foreignObject>` onto an output canvas.
 
 ## Navigation & Quick Links
-- [Interactive Workbench](/demo): Live interactive capture playground with presets and controls.
+- [Interactive Workbench](/): Live interactive capture playground with presets and controls.
 - [Release Changelog](/changelog): Chronological release notes, architectural milestones, and changes.
 - [GitHub Repository](https://github.com/yusufarsln98/html-shutter): Source code, issues, and contributing.
 - [npm Package](https://www.npmjs.com/package/html-shutter): Official package registry distribution.

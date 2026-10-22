@@ -143,7 +143,7 @@ The root/core subpath exports exactly five things: `captureElementToPngDataUrl`,
 and the `CaptureElementOptions` type (plus `VERSION`; `ElementPreview` is the
 return type of `previewElementAsImage`). The React subpath exports the hook and
 its two types. Keep it that way — Odak wraps only these, and the
-demo/homepage use the hook's actions.
+homepage uses the hook's actions.
 
 ### Internal-only modules (do not document as public API)
 

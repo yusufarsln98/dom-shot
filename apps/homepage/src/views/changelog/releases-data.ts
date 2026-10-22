@@ -15,7 +15,7 @@ export const RELEASES: ReleaseItem[] = [
           'High-fidelity DOM cloning pipeline that snapshots full recursive computed styles.',
           'Native system clipboard support via ClipboardItem(["image/png"]) to paste screenshots directly into chat or document tools.',
           'Configurable pixelRatio multiplier (1x, 2x, 3x) for retina and ultra-crisp display exports.',
-          'Selective exclusion engine (.no-export / .rs-demo-noexport) to strip buttons, tooltips, or watermarks from capture.',
+          'Selective exclusion engine (.no-export / data-no-export) to strip buttons, tooltips, or watermarks from capture.',
           'Lossless HTML5 <canvas> and inline <svg> rasterization into embedded PNG data URLs.',
         ],
       },

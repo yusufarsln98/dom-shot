@@ -28,7 +28,7 @@ npm-debug.log*
 # typescript
 *.tsbuildinfo
 
-# demo build / vite
+# build artifacts
 build/
 .next/
 out/
