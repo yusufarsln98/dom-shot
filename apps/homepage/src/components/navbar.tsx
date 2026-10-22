@@ -20,31 +20,34 @@ export function Navbar() {
   const appVersion = process.env.NEXT_PUBLIC_APP_VERSION || '0.1.0'
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--ds-line)] bg-[var(--ds-paper)]/85 backdrop-blur-md transition-colors">
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--ds-line)] bg-[var(--ds-paper)]/80 backdrop-blur-md transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Brand / Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 group focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[var(--ds-lens)] rounded-lg p-1"
+        >
           <PixelGrid size={28} className="pixel-anim text-[var(--ds-lens)] group-hover:scale-105 transition-transform" />
           <span className="font-sans font-bold text-xl tracking-tight text-[var(--ds-ink)]">
             html<span className="text-[var(--ds-lens)]">-</span>shutter
           </span>
-          <span className="ml-1 text-[11px] font-mono px-1.5 py-0.5 rounded border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)]">
+          <span className="ml-1 text-[11px] font-mono px-2 py-0.5 rounded-full border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)]">
             v{appVersion}
           </span>
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1.5 text-sm font-medium">
           {NAV_LINKS.map(({ href, label }) => {
             const isActive = pathname === href
             return (
               <Link
                 key={href}
                 href={href}
-                className={`px-3 py-1.5 rounded-lg transition-colors ${
+                className={`px-3.5 py-1.5 rounded-lg transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[var(--ds-lens)] ${
                   isActive
                     ? 'text-[var(--ds-lens)] bg-[var(--ds-panel)] shadow-xs font-semibold'
-                    : 'text-[var(--ds-muted)] hover:text-[var(--ds-ink)] hover:bg-[var(--ds-panel)]/50'
+                    : 'text-[var(--ds-muted)] hover:text-[var(--ds-ink)] hover:bg-[var(--ds-panel)]/60'
                 }`}
               >
                 {label}
@@ -54,13 +57,13 @@ export function Navbar() {
         </nav>
 
         {/* Actions (GitHub, NPM, Theme toggle) */}
-        <div className="hidden sm:flex items-center gap-2.5">
+        <div className="hidden sm:flex items-center gap-2">
           <a
             href="https://github.com/yusufarsln98/html-shutter"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub Repository"
-            className="p-2 rounded-lg border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)] hover:text-[var(--ds-ink)] hover:border-[var(--ds-lens)]/50 transition-colors"
+            className="p-2 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)] hover:text-[var(--ds-ink)] hover:border-[var(--ds-lens)]/50 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[var(--ds-lens)]"
           >
             <GitHubIcon size={16} />
           </a>
@@ -69,15 +72,15 @@ export function Navbar() {
             target="_blank"
             rel="noreferrer"
             aria-label="NPM Package"
-            className="p-2 rounded-lg border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)] hover:text-[var(--ds-ink)] hover:border-[var(--ds-lens)]/50 transition-colors"
+            className="p-2 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)] hover:text-[var(--ds-ink)] hover:border-[var(--ds-lens)]/50 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[var(--ds-lens)]"
           >
             <NpmIcon size={16} />
           </a>
           <button
             type="button"
             onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="p-2 rounded-lg border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)] hover:text-[var(--ds-ink)] hover:border-[var(--ds-lens)]/50 transition-colors cursor-pointer"
+            aria-label="Toggle dark/light theme"
+            className="p-2 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)] hover:text-[var(--ds-ink)] hover:border-[var(--ds-lens)]/50 transition-colors cursor-pointer focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[var(--ds-lens)]"
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
@@ -89,7 +92,7 @@ export function Navbar() {
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="p-2 rounded-lg border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)]"
+            className="p-2 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)]"
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
@@ -97,7 +100,8 @@ export function Navbar() {
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
-            className="p-2 rounded-lg border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)]"
+            aria-expanded={mobileMenuOpen}
+            className="p-2 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)] text-[var(--ds-muted)]"
           >
             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -124,7 +128,7 @@ export function Navbar() {
               </Link>
             )
           })}
-          <div className="pt-2 border-t border-[var(--ds-line)] flex gap-3">
+          <div className="pt-2 border-t border-[var(--ds-line)] flex gap-4">
             <a
               href="https://github.com/yusufarsln98/html-shutter"
               target="_blank"
@@ -147,4 +151,3 @@ export function Navbar() {
     </header>
   )
 }
-
