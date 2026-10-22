@@ -1,26 +1,26 @@
-# dom-shot
+# html-shutter
 
 > Capture any live HTML element as a pixel-accurate PNG screenshot — clone the DOM, inline computed styles, rasterize through SVG foreignObject, and export data URLs, downloads, or clipboard copy.
 
-`dom-shot` is a lightweight, dependency-free screenshot toolkit for web applications and dashboards. It creates an isolated clone of a target DOM subtree, inlines its computed styles through curated whitelists, flattens embedded HTML5 `<canvas>` bitmaps and SVG gradients, and rasterizes the tree via SVG `<foreignObject>` onto an output canvas.
+`html-shutter` is a lightweight, dependency-free screenshot toolkit for web applications and dashboards. It creates an isolated clone of a target DOM subtree, inlines its computed styles through curated whitelists, flattens embedded HTML5 `<canvas>` bitmaps and SVG gradients, and rasterizes the tree via SVG `<foreignObject>` onto an output canvas.
 
 ## Navigation & Quick Links
 - [Interactive Workbench](/demo): Live interactive capture playground with presets and controls.
 - [Release Changelog](/changelog): Chronological release notes, architectural milestones, and changes.
-- [GitHub Repository](https://github.com/yusufarsln98/dom-shot): Source code, issues, and contributing.
-- [npm Package](https://www.npmjs.com/package/dom-shot): Official package registry distribution.
+- [GitHub Repository](https://github.com/yusufarsln98/html-shutter): Source code, issues, and contributing.
+- [npm Package](https://www.npmjs.com/package/html-shutter): Official package registry distribution.
 - [SKILL.md Specification](/skill.md): AI coding assistant skill file for Antigravity, Cursor, and Claude Code.
 
 ## Installation
 ```bash
-npm install dom-shot
+npm install html-shutter
 # or
-pnpm add dom-shot
+pnpm add html-shutter
 ```
 
 ## Subpath Imports
-- `dom-shot` / `dom-shot/core`: Framework-agnostic core (`captureElementToPngDataUrl`, `previewElementAsImage`, `downloadElementAsImage`, `copyElementToClipboard`). Zero React dependencies.
-- `dom-shot/react`: Dedicated React hook `useElementCapture<T>()` with reactive state management (`isCapturing`, `preview`, `download`, `copy`).
+- `html-shutter` / `html-shutter/core`: Framework-agnostic core (`captureElementToPngDataUrl`, `previewElementAsImage`, `downloadElementAsImage`, `copyElementToClipboard`). Zero React dependencies.
+- `html-shutter/react`: Dedicated React hook `useElementCapture<T>()` with reactive state management (`isCapturing`, `preview`, `download`, `copy`).
 
 ## Core Invariants & Rules
 1. **Browser-Only Execution**: The rasterizer requires a real browser environment (`CanvasRenderingContext2D`, `foreignObject`, `XMLSerializer`). It does not run on Node server components or default headless jsdom.

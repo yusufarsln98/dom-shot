@@ -31,7 +31,7 @@ export function ReleaseCard({ release, selectedCategory }: ReleaseCardProps) {
         </div>
 
         <a
-          href={`https://github.com/yusufarsln98/dom-shot/releases/tag/v${release.version}`}
+          href={`https://github.com/yusufarsln98/html-shutter/releases/tag/v${release.version}`}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--ds-muted)] hover:text-[var(--ds-lens)] transition-colors self-start sm:self-auto"
@@ -67,4 +67,3 @@ export function ReleaseCard({ release, selectedCategory }: ReleaseCardProps) {
     </article>
   )
 }
-

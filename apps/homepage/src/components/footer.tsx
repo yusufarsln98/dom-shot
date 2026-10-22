@@ -1,15 +1,7 @@
 import Link from 'next/link'
 import { PixelGrid } from './pixel-grid'
 import { GitHubIcon, NpmIcon } from './icons'
-import {
-  Layers,
-  Camera,
-  Tag,
-  FileText,
-  Bot,
-  FileCode,
-  Sparkles,
-} from 'lucide-react'
+import { Layers, Camera, Tag, FileText, Bot, FileCode, Sparkles } from 'lucide-react'
 
 export function Footer() {
   const appVersion = process.env.NEXT_PUBLIC_APP_VERSION || '0.1.0'
@@ -21,7 +13,11 @@ export function Footer() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-[var(--ds-line)]">
           <div className="space-y-2">
             <Link href="/" className="inline-flex items-center gap-2 group">
-              <PixelGrid size={24} color="lens" className="group-hover:scale-105 transition-transform" />
+              <PixelGrid
+                size={24}
+                color="lens"
+                className="group-hover:scale-105 transition-transform"
+              />
               <span className="font-sans font-bold text-lg text-[var(--ds-ink)]">
                 html<span className="text-[var(--ds-lens)]">-</span>shutter
               </span>
@@ -152,7 +148,7 @@ export function Footer() {
 
         {/* Colophon */}
         <div className="border-t border-[var(--ds-line)] mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[var(--ds-muted)] gap-3 font-mono">
-          <div>&copy; {new Date().getFullYear()} dom-shot · Open source under MIT</div>
+          <div>&copy; {new Date().getFullYear()} html-shutter · Open source under MIT</div>
           <div className="flex items-center gap-1.5 text-[var(--ds-lens)]">
             <span>Ink</span> · <span>Lens</span> · <span>Deep Lens</span> · <span>Flash</span>
           </div>

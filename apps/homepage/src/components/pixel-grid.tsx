@@ -10,12 +10,18 @@ type Props = {
 }
 
 /**
- * dom-shot logo — a 3×3 pixel grid that fills in like a rendered image.
+ * html-shutter logo — a 3×3 pixel grid that fills in like a rendered image.
  * The amber pixel (top-right) is the shutter flash. Geometry and opacity
  * matrix are taken verbatim from the brand kit.
  */
-export function PixelGrid({ className, size = 64, animated = false, color = 'currentColor' }: Props) {
-  const tone = color === 'ink' ? 'var(--ds-ink)' : color === 'lens' ? 'var(--ds-lens)' : 'currentColor'
+export function PixelGrid({
+  className,
+  size = 64,
+  animated = false,
+  color = 'currentColor',
+}: Props) {
+  const tone =
+    color === 'ink' ? 'var(--ds-ink)' : color === 'lens' ? 'var(--ds-lens)' : 'currentColor'
   const flash = 'var(--ds-flash)'
 
   // (row, column) → opacity, from the brand sheet
@@ -44,7 +50,12 @@ export function PixelGrid({ className, size = 64, animated = false, color = 'cur
           rx={6}
           fill={isFlash ? flash : tone}
           fillOpacity={1}
-          style={{ opacity: o, ...(animated ? { '--d': `${(row + col) * 90}ms` } : null) } as CSSProperties}
+          style={
+            {
+              opacity: o,
+              ...(animated ? { '--d': `${(row + col) * 90}ms` } : null),
+            } as CSSProperties
+          }
         />,
       )
     }

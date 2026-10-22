@@ -1,11 +1,11 @@
 ---
-name: dom-shot
-description: Rules, API reference, pipeline constraints, and integration guidelines for using the dom-shot toolkit — capturing HTML elements as pixel-accurate PNG screenshots, with an optional React hook.
+name: html-shutter
+description: Rules, API reference, pipeline constraints, and integration guidelines for using the html-shutter toolkit — capturing HTML elements as pixel-accurate PNG screenshots, with an optional React hook.
 ---
 
-# Skill: Using dom-shot
+# Skill: Using html-shutter
 
-`dom-shot` turns any live DOM element into a pixel-accurate PNG data URL. It runs a clone → inline → SVG `foreignObject` → canvas pipeline that leans on the browser's own layout engine, with zero runtime dependencies and an optional React binding. The **core is fully framework-agnostic** — usable from vanilla JS, Vue, Svelte, or anything else — while the React hook is a separate, opt-in subpath.
+`html-shutter` turns any live DOM element into a pixel-accurate PNG data URL. It runs a clone → inline → SVG `foreignObject` → canvas pipeline that leans on the browser's own layout engine, with zero runtime dependencies and an optional React binding. The **core is fully framework-agnostic** — usable from vanilla JS, Vue, Svelte, or anything else — while the React hook is a separate, opt-in subpath.
 
 ---
 
@@ -13,12 +13,12 @@ description: Rules, API reference, pipeline constraints, and integration guideli
 
 One package, two import surfaces (Node `exports` map):
 
-| Import                       | Surface                                                                                                                                                                         | React required?     |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `dom-shot` / `dom-shot/core` | Framework-agnostic core: `captureElementToPngDataUrl`, `previewElementAsImage`, `downloadElementAsImage`, `copyElementToClipboard`, `CaptureElementOptions`, `VERSION`           | No                  |
-| `dom-shot/react`             | `useElementCapture` hook + `UseElementCaptureOptions` / `UseElementCaptureReturn` types                                                                                          | Yes (optional peer) |
+| Import                               | Surface                                                                                                                                                                | React required?     |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `html-shutter` / `html-shutter/core` | Framework-agnostic core: `captureElementToPngDataUrl`, `previewElementAsImage`, `downloadElementAsImage`, `copyElementToClipboard`, `CaptureElementOptions`, `VERSION` | No                  |
+| `html-shutter/react`                 | `useElementCapture` hook + `UseElementCaptureOptions` / `UseElementCaptureReturn` types                                                                                | Yes (optional peer) |
 
-The core never imports React; the React peer dependency is only resolved by consumers importing `dom-shot/react`.
+The core never imports React; the React peer dependency is only resolved by consumers importing `html-shutter/react`.
 
 ## 2. Core AI Rules & Constraints
 
@@ -35,10 +35,10 @@ The core never imports React; the React peer dependency is only resolved by cons
 
 ## 3. Quick Start
 
-### React hook (`dom-shot/react`)
+### React hook (`html-shutter/react`)
 
 ```tsx
-import { useElementCapture } from 'dom-shot/react'
+import { useElementCapture } from 'html-shutter/react'
 
 function DashboardCard() {
   const { ref, preview, download, copy, isCapturing } = useElementCapture<HTMLDivElement>({
@@ -65,14 +65,14 @@ function DashboardCard() {
 
 Hook notes: the `ref` type defaults to `HTMLDivElement`; set the generic (`useElementCapture<HTMLElement>()`) for other tags. The hook exposes exactly three user-facing actions — `preview()` (an `ElementPreview`: `{ dataUrl, bytes, cssWidth }`, or `null` when the ref is unattached), `download()` (PNG file) and `copy()` (PNG image on the clipboard, both `Promise<boolean>`, `false` when the ref is unattached or the write failed). `preview()` already encodes the byte/CSS-size metadata, so hosts never decode the data URL themselves. Options are read through a latest-ref — callbacks stay stable, per-call `overrides` win over initialization options.
 
-### Framework-agnostic core (`dom-shot` / `dom-shot/core`)
+### Framework-agnostic core (`html-shutter` / `html-shutter/core`)
 
 ```ts
 import {
   captureElementToPngDataUrl,
   downloadElementAsImage,
   copyElementToClipboard,
-} from 'dom-shot'
+} from 'html-shutter'
 
 const panel = document.querySelector<HTMLElement>('#panel')!
 const dataUrl = await captureElementToPngDataUrl(panel, {
@@ -91,7 +91,7 @@ Works unchanged with Vue, Svelte, Angular, or a plain `<script type="module">` �
 
 ## 4. API Reference
 
-### Core (`dom-shot` / `dom-shot/core`)
+### Core (`html-shutter` / `html-shutter/core`)
 
 #### `captureElementToPngDataUrl(element, options?): Promise<string>`
 
@@ -132,7 +132,7 @@ the captured element's own computed corner radius (largest of the four corners;
 `0` for square elements), so the export mirrors the live silhouette. Do not add a
 `borderRadius` option back — Odak wrappers rely on the element-driven radius.
 
-### React (`dom-shot/react`)
+### React (`html-shutter/react`)
 
 - `useElementCapture<T extends HTMLElement = HTMLDivElement>(options?)` — hook returning `{ ref, preview, download, copy, isCapturing }`, plus the `UseElementCaptureOptions` / `UseElementCaptureReturn` types.
 

@@ -88,7 +88,7 @@ export function HeroSection() {
         {/* Scale-Bar Benchmark Metrics Strip */}
         <div className="w-full pt-8 mt-4 border-t border-[var(--ds-line)] grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
           <Capturable
-            fileName="dom-shot-metric-raster-latency"
+            fileName="html-shutter-metric-raster-latency"
             title="Metric · Raster Latency"
             className="p-4 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)]/50 space-y-1"
           >
@@ -103,7 +103,7 @@ export function HeroSection() {
           </Capturable>
 
           <Capturable
-            fileName="dom-shot-metric-bundle-footprint"
+            fileName="html-shutter-metric-bundle-footprint"
             title="Metric · Bundle Footprint"
             className="p-4 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)]/50 space-y-1"
           >
@@ -118,7 +118,7 @@ export function HeroSection() {
           </Capturable>
 
           <Capturable
-            fileName="dom-shot-metric-resolution-multiplier"
+            fileName="html-shutter-metric-resolution-multiplier"
             title="Metric · Resolution Multiplier"
             className="p-4 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)]/50 space-y-1"
           >
@@ -133,7 +133,7 @@ export function HeroSection() {
           </Capturable>
 
           <Capturable
-            fileName="dom-shot-metric-export-format"
+            fileName="html-shutter-metric-export-format"
             title="Metric · Export Format"
             className="p-4 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)]/50 space-y-1"
           >

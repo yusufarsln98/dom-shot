@@ -14,7 +14,7 @@ Or drop a markdown file manually:
 
 ```md
 ---
-'dom-shot': patch
+'html-shutter': patch
 ---
 
 Short description of the change.
@@ -22,9 +22,9 @@ Short description of the change.
 
 ## Release flow
 
-Changelog entries are **handwritten** in `packages/dom-shot/CHANGELOG.md` (package-name
+Changelog entries are **handwritten** in `packages/html-shutter/CHANGELOG.md` (package-name
 title, `## X.Y.Z` sections with `### Minor/Patch/Major Changes` bullets, newest
 on top). The GitHub Actions `Release` workflow still consumes changeset files
 for version bumps only: it opens a "Version PR" bumping the package version,
 and — when that PR is merged — publishes to npm via
-`npm run release --workspace=dom-shot`.
+`npm run release --workspace=html-shutter`.

@@ -20,7 +20,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('dark')
 
   useEffect(() => {
-    const saved = localStorage.getItem('dom-shot-theme') as Theme | null
+    const saved = localStorage.getItem('html-shutter-theme') as Theme | null
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     const initialTheme: Theme = saved || (prefersDark ? 'dark' : 'light')
     setThemeState(initialTheme)
@@ -42,7 +42,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = (t: Theme) => {
     setThemeState(t)
-    localStorage.setItem('dom-shot-theme', t)
+    localStorage.setItem('html-shutter-theme', t)
     applyTheme(t)
   }
 
@@ -60,4 +60,3 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
   return useContext(ThemeContext)
 }
-

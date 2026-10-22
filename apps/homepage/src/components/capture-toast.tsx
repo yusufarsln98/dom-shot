@@ -10,7 +10,7 @@ export interface CaptureToastData {
   elapsedMs?: number
 }
 
-const TOAST_EVENT = 'dom-shot-toast'
+const TOAST_EVENT = 'html-shutter-toast'
 
 export function showCaptureToast(data: Omit<CaptureToastData, 'id'>) {
   if (typeof window === 'undefined') return
@@ -75,7 +75,7 @@ export function CaptureToastContainer() {
           </div>
           <div className="flex items-center gap-1 text-[10px] text-[var(--ds-lens)] shrink-0 pl-2">
             <Camera size={11} />
-            <span>dom-shot</span>
+            <span>html-shutter</span>
           </div>
         </div>
       ))}

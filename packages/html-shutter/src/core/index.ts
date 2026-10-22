@@ -1,5 +1,5 @@
 /**
- * dom-shot — core (framework-agnostic)
+ * html-shutter — core (framework-agnostic)
  *
  * Capture HTML elements as PNG screenshots — clone the DOM, inline computed
  * styles, rasterize via SVG, and export the result as a file download or a
@@ -17,7 +17,7 @@
  * - `CaptureElementOptions` — the shared options type
  *
  * Everything else is an internal pipeline module and not exported.
- * React users: see `dom-shot/react` for the `useElementCapture` hook.
+ * React users: see `html-shutter/react` for the `useElementCapture` hook.
  */
 
 export type { CaptureElementOptions } from './types/index.js'

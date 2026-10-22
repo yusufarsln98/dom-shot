@@ -13,8 +13,8 @@
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
-      "dom-shot": ["../../packages/dom-shot/src/index.ts"],
-      "dom-shot/react": ["../../packages/dom-shot/src/react.ts"]
+      "html-shutter": ["../../packages/html-shutter/src/index.ts"],
+      "html-shutter/react": ["../../packages/html-shutter/src/react.ts"]
     },
     "strict": true,
     "noUnusedLocals": false,

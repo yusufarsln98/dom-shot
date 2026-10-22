@@ -3,11 +3,11 @@ import { AppShell } from '../components/app-shell'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'dom-shot — Pixel-accurate DOM element screenshots',
+  title: 'html-shutter — Pixel-accurate DOM element screenshots',
   description:
     'Capture any live HTML element as a pixel-accurate PNG screenshot. Clone DOM, inline computed styles, rasterize through SVG, and export data URLs, downloads, or clipboard copy.',
   keywords: [
-    'dom-shot',
+    'html-shutter',
     'screenshot',
     'dom to image',
     'html to png',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'svg rasterize',
     'element capture',
   ],
-  authors: [{ name: 'dom-shot contributors' }],
+  authors: [{ name: 'html-shutter contributors' }],
 }
 
 export const viewport: Viewport = {
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: `(function(){
   try {
-    var saved = localStorage.getItem('dom-shot-theme');
+    var saved = localStorage.getItem('html-shutter-theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     var isDark = saved === 'dark' || (!saved && prefersDark) || (!saved && !prefersDark ? false : isDark);
     if (saved === 'dark' || (!saved && prefersDark)) {
@@ -59,4 +59,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-

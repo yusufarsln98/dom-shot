@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   dom-shot Prism Syntax Theme
+   html-shutter Prism Syntax Theme
    Deep Lens / Lens cyan highlights, Flash amber accents, scheme-aware.
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -67,4 +67,3 @@
 .token.italic {
   font-style: italic;
 }
-

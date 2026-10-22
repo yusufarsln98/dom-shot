@@ -54,7 +54,10 @@ const PILLARS = [
 
 export function PillarsSection() {
   return (
-    <section id="pillars" className="w-full py-16 px-4 sm:px-6 border-t border-[var(--ds-line)] bg-[var(--ds-panel)]/30 scroll-mt-12">
+    <section
+      id="pillars"
+      className="w-full py-16 px-4 sm:px-6 border-t border-[var(--ds-line)] bg-[var(--ds-panel)]/30 scroll-mt-12"
+    >
       <div className="max-w-6xl mx-auto space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--ds-lens)] font-semibold uppercase tracking-wider">
@@ -65,7 +68,8 @@ export function PillarsSection() {
             Engineered for Production UI
           </h2>
           <p className="text-sm text-[var(--ds-muted)]">
-            Accurately captures intricate dashboard widgets, responsive grids, canvas layers, and custom typography without visual artifacts.
+            Accurately captures intricate dashboard widgets, responsive grids, canvas layers, and
+            custom typography without visual artifacts.
           </p>
         </div>
 
@@ -73,7 +77,7 @@ export function PillarsSection() {
           {PILLARS.map(({ number, title, category, description, icon: Icon }) => (
             <Capturable
               key={number}
-              fileName={`dom-shot-pillar-${number}-${category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+              fileName={`html-shutter-pillar-${number}-${category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
               title={`${number} // ${category}`}
               className="p-6 rounded-2xl border border-[var(--ds-line)] bg-[var(--ds-panel)] space-y-3 relative group hover:border-[var(--ds-lens)]/50 transition-colors shadow-xs"
             >
@@ -94,4 +98,3 @@ export function PillarsSection() {
     </section>
   )
 }
-

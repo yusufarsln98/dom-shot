@@ -15,14 +15,14 @@ export function QuickstartSection() {
     <section id="quickstart" className="w-full py-16 px-4 sm:px-6 max-w-6xl mx-auto space-y-10">
       <div className="space-y-3">
         <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--ds-lens)] font-semibold uppercase tracking-wider">
-          <Code2 size={14} />
-          § 02 · Developer Integration
+          <Code2 size={14} />§ 02 · Developer Integration
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold font-sans text-[var(--ds-ink)] tracking-tight">
           Up and Running in 3 Minutes
         </h2>
         <p className="text-sm text-[var(--ds-muted)] max-w-2xl leading-relaxed text-pretty">
-          Seamlessly captures live DOM nodes, computed CSS properties, and canvas layers with zero coordinate drift. Works out-of-the-box with React 18 &amp; 19, or vanilla TypeScript.
+          Seamlessly captures live DOM nodes, computed CSS properties, and canvas layers with zero
+          coordinate drift. Works out-of-the-box with React 18 &amp; 19, or vanilla TypeScript.
         </p>
       </div>
 
@@ -61,7 +61,7 @@ export function QuickstartSection() {
 
           {/* Current sample description card */}
           <Capturable
-            fileName={`dom-shot-guide-${activeSample.id}`}
+            fileName={`html-shutter-guide-${activeSample.id}`}
             title={`Guide · ${activeSample.title}`}
             className="p-4 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-paper)] space-y-2"
           >
@@ -76,7 +76,7 @@ export function QuickstartSection() {
 
         {/* Right: Code Block with Syntax Highlighting */}
         <Capturable
-          fileName={`dom-shot-code-${activeSample.id}`}
+          fileName={`html-shutter-code-${activeSample.id}`}
           title={`Code · ${activeSample.filename}`}
           className="min-w-0 rounded-xl"
         >

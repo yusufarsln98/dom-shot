@@ -1,5 +1,5 @@
 /**
- * dom-shot/react
+ * html-shutter/react
  *
  * React bindings on top of the framework-agnostic core. Exposes a single
  * hook, `useElementCapture`, which manages the ref attachment and the
@@ -8,7 +8,7 @@
  * Import it from the dedicated subpath so non-React consumers never resolve
  * the React peer dependency:
  *
- *     import { useElementCapture } from 'dom-shot/react'
+ *     import { useElementCapture } from 'html-shutter/react'
  */
 
 export { useElementCapture } from './use-element-capture.js'

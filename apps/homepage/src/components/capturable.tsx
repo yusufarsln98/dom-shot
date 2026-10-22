@@ -18,7 +18,7 @@ export interface CapturableProps {
 
 export function Capturable({
   children,
-  fileName = 'dom-shot-component',
+  fileName = 'html-shutter-component',
   title,
   className = '',
   dwellMs = 380,
@@ -28,7 +28,9 @@ export function Capturable({
   const [isStopped, setIsStopped] = useState(false)
   const [shutter, setShutter] = useState(false)
   const [copyState, setCopyState] = useState<'idle' | 'capturing' | 'copied' | 'error'>('idle')
-  const [downloadState, setDownloadState] = useState<'idle' | 'capturing' | 'downloaded' | 'error'>('idle')
+  const [downloadState, setDownloadState] = useState<'idle' | 'capturing' | 'downloaded' | 'error'>(
+    'idle',
+  )
 
   const dwellTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -87,7 +89,12 @@ export function Capturable({
     }
 
     // Don't auto-dismiss if currently capturing or showing active feedback
-    if (isCapturing || copyState === 'copied' || downloadState === 'downloaded' || isInteractingRef.current) {
+    if (
+      isCapturing ||
+      copyState === 'copied' ||
+      downloadState === 'downloaded' ||
+      isInteractingRef.current
+    ) {
       return
     }
 

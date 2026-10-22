@@ -7,7 +7,7 @@ export const RELEASES: ReleaseItem[] = [
     tag: 'Latest Stable',
     title: 'Initial Public Release & Core Architecture',
     description:
-      'The inaugural release of dom-shot — a high-performance, pixel-accurate DOM-to-PNG screenshot engine engineered for modern web apps and data dashboards.',
+      'The inaugural release of html-shutter — a high-performance, pixel-accurate DOM-to-PNG screenshot engine engineered for modern web apps and data dashboards.',
     changes: [
       {
         category: 'Features',
@@ -22,7 +22,7 @@ export const RELEASES: ReleaseItem[] = [
       {
         category: 'Architecture',
         items: [
-          'Dual subpath packaging: zero-dependency framework-agnostic core (dom-shot) and dedicated React hook (dom-shot/react).',
+          'Dual subpath packaging: zero-dependency framework-agnostic core (html-shutter) and dedicated React hook (html-shutter/react).',
           'Pure SVG <foreignObject> rasterization without Puppeteer or heavy canvas emulation dependencies.',
           'Dual CJS and ESM module exports bundled with tsup, with full TypeScript typings (.d.ts).',
         ],
@@ -37,4 +37,3 @@ export const RELEASES: ReleaseItem[] = [
     ],
   },
 ]
-

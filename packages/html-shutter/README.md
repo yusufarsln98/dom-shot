@@ -10,10 +10,10 @@ Browser-native element screenshots live behind `html2canvas`-style line-by-line 
 
 One package, two import surfaces behind a Node `exports` map:
 
-| Import | Surface | Requires React? |
-| --- | --- | --- |
-| `html-shutter` (or `html-shutter/core`) | Framework-agnostic core: `captureElementToPngDataUrl`, `previewElementAsImage`, `downloadElementAsImage`, `copyElementToClipboard`, `CaptureElementOptions`, `VERSION` | No |
-| `html-shutter/react` | `useElementCapture` hook + `UseElementCaptureOptions` / `UseElementCaptureReturn` | optional peer |
+| Import                                  | Surface                                                                                                                                                                | Requires React? |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `html-shutter` (or `html-shutter/core`) | Framework-agnostic core: `captureElementToPngDataUrl`, `previewElementAsImage`, `downloadElementAsImage`, `copyElementToClipboard`, `CaptureElementOptions`, `VERSION` | No              |
+| `html-shutter/react`                    | `useElementCapture` hook + `UseElementCaptureOptions` / `UseElementCaptureReturn`                                                                                      | optional peer   |
 
 - `src/core/` — the DOM/canvas pipeline (cloning, style inlining, SVG rasterization, exporting). **Zero imports from React or any UI framework**, so it runs in vanilla JS, Vue, Svelte, Angular, or a plain `<script type="module">`.
 - `src/react/` — a thin hook wrapper that manages ref attachment and transient capture state on top of the same core functions.
@@ -91,33 +91,33 @@ export function ExportCard() {
 MIT © Yusuf Arslan
 
 function DashboardCard() {
-  // Three user-facing actions: preview the PNG, download the file, copy the image.
-  const { ref, preview, download, copy, isCapturing } = useElementCapture<HTMLDivElement>({
-    fileName: 'my-card',
-    pixelRatio: 2,
-  })
+// Three user-facing actions: preview the PNG, download the file, copy the image.
+const { ref, preview, download, copy, isCapturing } = useElementCapture<HTMLDivElement>({
+fileName: 'my-card',
+pixelRatio: 2,
+})
 
-  return (
-    <div>
-      <div ref={ref}>{/* anything visual to capture */}</div>
-      <button
-        onClick={async () => {
-          const shot = await preview() // { dataUrl, bytes, cssWidth } | null
-          console.log(`captured ${(shot.bytes / 1024).toFixed(1)} KB at ${shot.cssWidth}px`)
-        }}
-        disabled={isCapturing}
-      >
-        Preview PNG
-      </button>
-      <button onClick={() => download()} disabled={isCapturing}>
-        Download PNG
-      </button>
-      <button onClick={() => copy()} disabled={isCapturing}>
-        Copy image
-      </button>
-    </div>
-  )
+return (
+<div>
+<div ref={ref}>{/* anything visual to capture */}</div>
+<button
+onClick={async () => {
+const shot = await preview() // { dataUrl, bytes, cssWidth } | null
+console.log(`captured ${(shot.bytes / 1024).toFixed(1)} KB at ${shot.cssWidth}px`)
+}}
+disabled={isCapturing} >
+Preview PNG
+</button>
+<button onClick={() => download()} disabled={isCapturing}>
+Download PNG
+</button>
+<button onClick={() => copy()} disabled={isCapturing}>
+Copy image
+</button>
+</div>
+)
 }
+
 ```
 
 The hook reads options through a latest-ref (callbacks stay referentially stable) and exposes `isCapturing` while a capture runs; every call may partially override the initialization options. `preview()` resolves `null` when the ref is unattached — it already bundles the byte-size/CSS-size math, so callers never decode the data URL themselves.
@@ -131,9 +131,10 @@ The hook reads options through a latest-ref (callbacks stay referentially stable
 
 ## Documentation
 
-- See [`SKILL.md`](../../.agents/skills/dom-shot/SKILL.md) for integration rules and pitfalls.
+- See [`SKILL.md`](../../.agents/skills/html-shutter/SKILL.md) for integration rules and pitfalls.
 - See [`llms.txt`](https://github.com/yusufarsln98/react-screenshot) for an LLM-friendly API summary.
 
 ## License
 
 MIT © Yusuf Arslan
+```

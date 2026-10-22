@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from 'node:fs'
 
 // Keep the site's version badge in lock-step with the published library.
 let appVersion = '0.1.0'
-const libPkgPath = path.resolve(__dirname, '../../packages/dom-shot/package.json')
+const libPkgPath = path.resolve(__dirname, '../../packages/html-shutter/package.json')
 if (existsSync(libPkgPath)) {
   try {
     appVersion = JSON.parse(readFileSync(libPkgPath, 'utf-8')).version
@@ -15,7 +15,7 @@ if (existsSync(libPkgPath)) {
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  transpilePackages: ['dom-shot'],
+  transpilePackages: ['html-shutter'],
   turbopack: {
     root: path.resolve(__dirname, '../../'),
   },
@@ -28,8 +28,8 @@ const nextConfig: NextConfig = {
     config.resolve = config.resolve || {}
     config.resolve.alias = {
       ...config.resolve.alias,
-      'dom-shot$': path.resolve(__dirname, '../../packages/dom-shot/src/index.ts'),
-      'dom-shot/react': path.resolve(__dirname, '../../packages/dom-shot/src/react.ts'),
+      'html-shutter$': path.resolve(__dirname, '../../packages/html-shutter/src/index.ts'),
+      'html-shutter/react': path.resolve(__dirname, '../../packages/html-shutter/src/react.ts'),
     }
     config.resolve.extensionAlias = {
       '.js': ['.ts', '.tsx', '.js'],
