@@ -6,7 +6,7 @@
 
 ## Architecture
 
-This repository is structured as a monorepo modeled after the `react-leaflet-canvas` architecture. The package itself is split into a **framework-agnostic core** (`src/core/`) and a **React binding** (`src/react/`) behind subpath exports:
+This repository is structured as a monorepo modeled after the `html-shutter` architecture. The package itself is split into a **framework-agnostic core** (`src/core/`) and a **React binding** (`src/react/`) behind subpath exports:
 
 ```
 ├── packages/
@@ -30,10 +30,10 @@ This repository is structured as a monorepo modeled after the `react-leaflet-can
 
 ### Import surfaces (Node `exports` map)
 
-| Import | What you get |
-| --- | --- |
-| `html-shutter` | Framework-agnostic core (also available as `html-shutter/core`) |
-| `html-shutter/react` | The `useElementCapture` hook (optional `react` peer) |
+| Import               | What you get                                                    |
+| -------------------- | --------------------------------------------------------------- |
+| `html-shutter`       | Framework-agnostic core (also available as `html-shutter/core`) |
+| `html-shutter/react` | The `useElementCapture` hook (optional `react` peer)            |
 
 The core never imports React, so vanilla and non-React framework consumers never resolve an optional peer dependency; React consumers get state management via the dedicated subpath.
 

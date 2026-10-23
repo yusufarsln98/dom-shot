@@ -165,7 +165,7 @@ export function Capturable({
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       className={`relative transition-all duration-200 ${
-        isStopped ? 'ring-1 ring-[var(--ds-lens)]/50' : ''
+        isStopped ? 'ring-1 ring-accent/60 shadow-lg shadow-accent/5' : ''
       } ${className}`}
     >
       {isStopped && (
