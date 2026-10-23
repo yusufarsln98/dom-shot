@@ -36,16 +36,13 @@ const COMPARISONS = [
 
 export function ComparisonSection() {
   return (
-    <section className="w-full py-20 px-4 sm:px-6 max-w-6xl mx-auto space-y-10">
+    <section className="w-full py-24 px-6 sm:px-8 max-w-6xl mx-auto space-y-12">
       <div className="text-center max-w-2xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--ds-line)] bg-[var(--ds-panel)] text-xs font-mono text-[var(--ds-lens)] font-semibold uppercase tracking-wider shadow-xs">
-          <Activity size={14} />
-          <span>§ 03 · Benchmarking</span>
-        </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold font-sans text-[var(--ds-ink)] tracking-tight">
+        <div className="eyebrow text-accent">§ 03 · Benchmarking</div>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight">
           Why html-shutter?
         </h2>
-        <p className="text-sm sm:text-base text-[var(--ds-muted)] leading-relaxed">
+        <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
           A surgical comparison against traditional canvas emulators and server-side browser engines.
         </p>
       </div>
@@ -53,44 +50,44 @@ export function ComparisonSection() {
       <Capturable
         fileName="html-shutter-comparison-benchmark"
         title="Comparison · Feature & Benchmark Table"
-        className="rounded-2xl border border-[var(--ds-line)] bg-[var(--ds-panel)] shadow-sm overflow-hidden"
+        className="rounded-2xl border border-border-primary bg-bg-pane shadow-float overflow-hidden"
       >
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs sm:text-sm font-mono border-collapse">
-            <thead className="border-b border-[var(--ds-line)] bg-[var(--ds-paper)] text-[var(--ds-muted)]">
+            <thead className="border-b border-border-primary bg-bg-sidebar/80 text-text-muted text-xs uppercase tracking-wider">
               <tr>
-                <th scope="col" className="py-4 px-5 font-semibold text-xs uppercase tracking-wider">
+                <th scope="col" className="py-4 px-5 font-semibold">
                   Capability
                 </th>
-                <th scope="col" className="py-4 px-5 font-bold text-xs uppercase tracking-wider text-[var(--ds-lens)] bg-[var(--ds-lens)]/5 border-x border-[var(--ds-lens)]/20">
+                <th scope="col" className="py-4 px-5 font-bold text-accent bg-accent/5 border-x border-border-primary">
                   <span className="inline-flex items-center gap-1.5">
-                    <Sparkles size={13} className="text-[var(--ds-flash)]" />
+                    <Sparkles size={13} className="text-flash" />
                     html-shutter
                   </span>
                 </th>
-                <th scope="col" className="py-4 px-5 font-semibold text-xs uppercase tracking-wider">
+                <th scope="col" className="py-4 px-5 font-semibold">
                   html2canvas
                 </th>
-                <th scope="col" className="py-4 px-5 font-semibold text-xs uppercase tracking-wider">
+                <th scope="col" className="py-4 px-5 font-semibold">
                   Puppeteer
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[var(--ds-line)] text-[var(--ds-ink)]">
+            <tbody className="divide-y divide-border-primary text-text-primary">
               {COMPARISONS.map((row, idx) => (
-                <tr key={idx} className="hover:bg-[var(--ds-paper)]/50 transition-colors">
-                  <td className="py-4 px-5 font-sans font-medium text-[var(--ds-ink)]">
+                <tr key={idx} className="hover:bg-bg-sidebar/30 transition-colors">
+                  <td className="py-4 px-5 font-sans font-medium text-text-primary">
                     {row.feature}
                   </td>
-                  <td className="py-4 px-5 text-[var(--ds-lens)] font-bold bg-[var(--ds-lens)]/5 border-x border-[var(--ds-lens)]/20">
-                    <span className="inline-block px-2 py-0.5 rounded-md bg-[var(--ds-panel)] text-[var(--ds-lens)] border border-[var(--ds-lens)]/30 text-xs">
+                  <td className="py-4 px-5 text-accent font-semibold bg-accent/5 border-x border-border-primary">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-bg-pane border border-border-primary text-accent text-xs font-mono shadow-2xs">
                       {row.htmlShutter}
                     </span>
                   </td>
-                  <td className="py-4 px-5 text-[var(--ds-muted)] text-xs">
+                  <td className="py-4 px-5 text-text-muted text-xs">
                     {row.html2canvas}
                   </td>
-                  <td className="py-4 px-5 text-[var(--ds-muted)] text-xs">
+                  <td className="py-4 px-5 text-text-muted text-xs">
                     {row.puppeteer}
                   </td>
                 </tr>

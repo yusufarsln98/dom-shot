@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import '../styles/prism.css';
 
-/* ── Brand fonts (Space Grotesk & JetBrains Mono) ───────────────────────── */
+/* ── Brand Typography: Space Grotesk & JetBrains Mono ───────────────────── */
 @font-face {
   font-family: 'Space Grotesk';
   font-style: normal;
@@ -20,72 +20,130 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ── Theme & modern color space interpolation tokens ─────────────────────── */
+/* ── Dark variant match for meta[name="color-scheme"] ────────────────────── */
+@custom-variant dark {
+  &:where(:root:has(> head > meta[name='color-scheme'][content='dark']) *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not(:has(> head > meta[name='color-scheme'][content='light'])) *) {
+      @slot;
+    }
+  }
+}
+
+/* ── Theme Tokens ────────────────────────────────────────────────────────── */
 @theme {
   --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --color-ink: var(--ds-ink);
-  --color-paper: var(--ds-paper);
-  --color-lens: var(--ds-lens);
-  --color-deep-lens: var(--ds-deep-lens);
-  --color-flash: var(--ds-flash);
-  --color-panel: var(--ds-panel);
-  --color-line: var(--ds-line);
-  --color-muted: var(--ds-muted);
-  --color-lens-contrast: var(--ds-lens-contrast);
+
+  /* Native OS surfaces */
+  --color-bg-app: var(--bg-app);
+  --color-bg-sidebar: var(--bg-sidebar);
+  --color-bg-pane: var(--bg-pane);
+  --color-bg-pane-inner: var(--bg-pane-inner);
+  --color-bg-inverse: var(--bg-inverse);
+
+  /* Lines */
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+
+  /* Brand Accents */
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-fg: var(--accent-fg);
+  --color-flash: var(--flash);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+
+  /* Legacy --ds-* aliases */
+  --color-ink: var(--text-primary);
+  --color-paper: var(--bg-app);
+  --color-panel: var(--bg-pane);
+  --color-line: var(--border-primary);
+  --color-muted: var(--text-secondary);
+  --color-lens: var(--accent);
+  --color-deep-lens: var(--accent-strong);
+  --color-lens-contrast: var(--accent-fg);
+
+  --shadow-float: 0 1px 0 0 oklch(1 0 0 / 0.04) inset, 0 24px 60px -24px oklch(0.1 0.01 265 / 0.45), 0 8px 20px -12px oklch(0.1 0.01 265 / 0.35);
 }
 
 :root {
-  color-scheme: dark light;
-  --in-oklch: ;
-  --ds-ink: light-dark(#0b1020, #f5f7fb);
-  --ds-paper: light-dark(#f5f7fb, #0b1020);
-  --ds-lens: light-dark(#0891b2, #4fd8f5);
-  --ds-deep-lens: light-dark(#0891b2, #4fd8f5);
-  --ds-flash: #ffc24b;
-  --ds-panel: light-dark(#ffffff, #121826);
-  --ds-line: light-dark(#dde3ee, #232c42);
-  --ds-muted: light-dark(#4a5568, #8b95ad);
-  --ds-lens-contrast: light-dark(#ffffff, #0b1020);
-}
+  color-scheme: light dark;
 
-@supports (linear-gradient(in oklch, white, black)) {
-  :root {
-    --in-oklch: in oklch;
+  &:has(> head > meta[name='color-scheme'][content='dark']) {
+    color-scheme: dark;
   }
+  &:has(> head > meta[name='color-scheme'][content='light']) {
+    color-scheme: light;
+  }
+
+  /* ── 100% Native Clean Zinc / Slate Palette ── */
+  --bg-app: light-dark(oklch(0.985 0.002 265), oklch(0.125 0.004 265));
+  --bg-sidebar: light-dark(oklch(0.965 0.003 265), oklch(0.145 0.005 265));
+  --bg-pane: light-dark(oklch(1 0 0), oklch(0.175 0.006 265));
+  --bg-pane-inner: light-dark(oklch(0.975 0.002 265), oklch(0.155 0.005 265));
+  --bg-inverse: light-dark(oklch(0.15 0.005 265), oklch(0.96 0.002 265));
+
+  --border-primary: light-dark(oklch(0.92 0.003 265), oklch(0.24 0.006 265));
+  --border-secondary: light-dark(oklch(0.86 0.004 265), oklch(0.32 0.008 265));
+
+  --text-primary: light-dark(oklch(0.18 0.005 265), oklch(0.98 0 0));
+  --text-secondary: light-dark(oklch(0.42 0.008 265), oklch(0.72 0.006 265));
+  --text-muted: light-dark(oklch(0.58 0.006 265), oklch(0.50 0.006 265));
+  --text-inverse: light-dark(oklch(0.985 0.002 265), oklch(0.16 0.005 265));
+
+  /* Brand Signature — Optical Aperture Cyan & Shutter Amber */
+  --accent: light-dark(oklch(0.54 0.17 220), oklch(0.75 0.15 215));
+  --accent-strong: light-dark(oklch(0.46 0.18 220), oklch(0.82 0.13 215));
+  --accent-fg: light-dark(#ffffff, oklch(0.12 0.02 215));
+  --flash: light-dark(oklch(0.70 0.17 68), oklch(0.83 0.15 75));
+  --success: light-dark(oklch(0.56 0.13 155), oklch(0.78 0.14 155));
+  --danger: light-dark(oklch(0.56 0.19 25), oklch(0.70 0.17 25));
+
+  /* Backward compatibility for --ds-* properties */
+  --ds-ink: var(--text-primary);
+  --ds-paper: var(--bg-app);
+  --ds-panel: var(--bg-pane);
+  --ds-line: var(--border-primary);
+  --ds-muted: var(--text-secondary);
+  --ds-lens: var(--accent);
+  --ds-deep-lens: var(--accent-strong);
+  --ds-flash: var(--flash);
+  --ds-lens-contrast: var(--accent-fg);
 }
 
 html.dark {
   color-scheme: dark;
-  --ds-ink: #f5f7fb;
-  --ds-paper: #0b1020;
-  --ds-lens: #4fd8f5;
-  --ds-deep-lens: #4fd8f5;
-  --ds-panel: #121826;
-  --ds-line: #232c42;
-  --ds-muted: #8b95ad;
-  --ds-lens-contrast: #0b1020;
 }
 
 html.light {
   color-scheme: light;
-  --ds-ink: #0b1020;
-  --ds-paper: #f5f7fb;
-  --ds-lens: #0891b2;
-  --ds-deep-lens: #0891b2;
-  --ds-panel: #ffffff;
-  --ds-line: #dde3ee;
-  --ds-muted: #4a5568;
-  --ds-lens-contrast: #ffffff;
 }
 
 /* ── Modern typography & base defaults ───────────────────────────────────── */
 @layer base {
+  html {
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
-    background-color: var(--ds-paper);
-    color: var(--ds-ink);
+    min-height: 100dvh;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
     line-height: 1.5;
-    text-align: start;
     overflow-wrap: break-word;
   }
 
@@ -98,79 +156,65 @@ html.light {
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--ds-lens) 30%, transparent);
+    background-color: color-mix(in oklch, var(--accent) 30%, transparent);
+    color: inherit;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-secondary) transparent;
   }
 }
 
-/* ── Decorative surfaces & visual effects ────────────────────────────────── */
+/* ── Decorative utilities (smooth masks, no background grids) ────────────── */
 @layer utilities {
-  .bg-graph {
-    background-image: radial-gradient(
-      color-mix(in srgb, currentColor 12%, transparent) 1px,
-      transparent 1px
-    );
-    background-size: 24px 24px;
+  .mask-radial {
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
   }
 
-  .bg-lens-glow {
-    background: radial-gradient(
-      ellipse 60% 50% at 50% 0% var(--in-oklch),
-      color-mix(in srgb, var(--ds-lens) 16%, transparent),
-      transparent 70%
-    );
-  }
-
-  .bg-ruler {
-    background-image:
-      repeating-linear-gradient(to right, var(--ds-line) 0 1px, transparent 1px 40px),
-      repeating-linear-gradient(to right, var(--ds-line) 0 1px, transparent 1px 8px);
-    background-size: 100% 8px, 100% 4px;
-    background-repeat: repeat-x;
-  }
-
-  .bg-checkerboard {
-    background-image:
-      linear-gradient(45deg, color-mix(in srgb, var(--ds-muted) 12%, transparent) 25%, transparent 25%),
-      linear-gradient(-45deg, color-mix(in srgb, var(--ds-muted) 12%, transparent) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, color-mix(in srgb, var(--ds-muted) 12%, transparent) 75%),
-      linear-gradient(-45deg, transparent 75%, color-mix(in srgb, var(--ds-muted) 12%, transparent) 75%);
-    background-size: 16px 16px;
-    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 }
 
-/* ── Viewfinder Aperture Marks & Shutter Flash ─────────────────────────────── */
+/* ── Viewfinder Aperture Reticle Marks & Shutter Flash ─────────────────────── */
 .viewfinder-plate {
   position: relative;
 }
 
 .viewfinder-corner {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   pointer-events: none;
-  border-color: var(--ds-lens);
-  opacity: 0.6;
-  transition: opacity 0.2s ease, border-color 0.2s ease;
+  border-color: var(--accent);
+  opacity: 0.75;
+  filter: drop-shadow(0 0 4px color-mix(in oklch, var(--accent) 40%, transparent));
+  transition: opacity 0.15s ease, border-color 0.15s ease;
 }
 
 .viewfinder-plate:hover .viewfinder-corner {
   opacity: 1;
-  border-color: var(--ds-flash);
+  border-color: var(--flash);
 }
 
-.viewfinder-corner-tl { top: 6px; left: 6px; border-top: 2px solid; border-left: 2px solid; }
-.viewfinder-corner-tr { top: 6px; right: 6px; border-top: 2px solid; border-right: 2px solid; }
-.viewfinder-corner-bl { bottom: 6px; left: 6px; border-bottom: 2px solid; border-left: 2px solid; }
-.viewfinder-corner-br { bottom: 6px; right: 6px; border-bottom: 2px solid; border-right: 2px solid; }
+.viewfinder-corner-tl { top: 6px; left: 6px; border-top: 1.5px solid; border-left: 1.5px solid; }
+.viewfinder-corner-tr { top: 6px; right: 6px; border-top: 1.5px solid; border-right: 1.5px solid; }
+.viewfinder-corner-bl { bottom: 6px; left: 6px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.viewfinder-corner-br { bottom: 6px; right: 6px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
 
 @keyframes shutter-burst {
-  0% { opacity: 0.8; }
+  0% { opacity: 0.95; }
   100% { opacity: 0; }
 }
 
 .shutter-flash-overlay {
-  animation: shutter-burst 0.35s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+  animation: shutter-burst 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ── Pixel-grid logo animation ────────────────────────────────────────────── */

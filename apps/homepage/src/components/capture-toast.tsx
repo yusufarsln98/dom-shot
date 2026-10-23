@@ -44,36 +44,36 @@ export function CaptureToastContainer() {
   return (
     <aside
       aria-label="Capture notifications"
-      className="no-export fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none max-w-sm w-full px-4 sm:px-0"
+      className="no-export fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none max-w-sm w-full px-4 sm:px-0"
       data-no-export="true"
     >
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className="pointer-events-auto flex items-center justify-between gap-3 px-4 py-3 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-panel)]/95 backdrop-blur-md shadow-xl text-xs font-mono text-[var(--ds-ink)] animate-in fade-in slide-in-from-bottom-3 duration-200"
+          className="pointer-events-auto flex items-center justify-between gap-3 px-4 py-3 rounded-2xl border border-border-primary bg-bg-pane/95 backdrop-blur-xl shadow-float text-xs font-mono text-text-primary animate-in fade-in slide-in-from-bottom-3 duration-200"
         >
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-7 h-7 rounded-lg border border-[var(--ds-line)] bg-[var(--ds-paper)] flex items-center justify-center shrink-0 text-[var(--ds-lens)]">
-              {toast.type === 'copy' ? <Copy size={14} /> : <Download size={14} />}
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-8 h-8 rounded-xl border border-border-primary bg-bg-sidebar flex items-center justify-center shrink-0 text-accent shadow-2xs">
+              {toast.type === 'copy' ? <Copy size={15} /> : <Download size={15} />}
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 space-y-0.5">
               <div className="flex items-center gap-1.5 font-bold truncate">
-                <Check size={12} className="text-emerald-500 shrink-0" />
+                <Check size={13} className="text-success shrink-0" />
                 <span className="truncate">
                   {toast.type === 'copy' ? 'Copied to clipboard' : 'PNG downloaded'}
                 </span>
               </div>
-              <div className="text-[11px] text-[var(--ds-muted)] truncate flex items-center gap-1.5">
+              <div className="text-[11px] text-text-muted truncate flex items-center gap-1.5">
                 <span className="truncate">{toast.title}</span>
                 {toast.elapsedMs !== undefined && (
-                  <span className="text-[var(--ds-flash)] shrink-0 font-semibold">
-                    ({toast.elapsedMs}ms)
+                  <span className="inline-flex items-center px-1.5 py-0.2 rounded bg-flash/15 border border-flash/30 text-flash shrink-0 font-bold text-[10px]">
+                    {toast.elapsedMs}ms
                   </span>
                 )}
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-1 text-[10px] text-[var(--ds-lens)] shrink-0 pl-2">
+          <div className="flex items-center gap-1 text-[10px] text-accent shrink-0 pl-2 opacity-80 font-mono">
             <Camera size={11} />
             <span>html-shutter</span>
           </div>

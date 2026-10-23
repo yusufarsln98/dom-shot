@@ -56,43 +56,41 @@ export function PillarsSection() {
   return (
     <section
       id="pillars"
-      className="w-full py-20 px-4 sm:px-6 border-t border-[var(--ds-line)] bg-[var(--ds-panel)]/40 scroll-mt-12"
+      className="py-24 px-6 sm:px-8 border-b border-border-primary bg-bg-sidebar/30 scroll-mt-12"
     >
-      <div className="max-w-6xl mx-auto space-y-12">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[var(--ds-line)] bg-[var(--ds-panel)] text-xs font-mono text-[var(--ds-lens)] font-semibold uppercase tracking-wider shadow-xs">
-            <Boxes size={14} />
-            <span>§ 01 · Core Architecture</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-sans text-[var(--ds-ink)] tracking-tight">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="eyebrow text-accent mb-2">§ 01 · Core Architecture</div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight">
             Engineered for Production UI
           </h2>
-          <p className="text-sm sm:text-base text-[var(--ds-muted)] max-w-[60ch] mx-auto leading-relaxed">
+          <p className="text-text-secondary text-sm mt-3 leading-relaxed">
             Accurately captures intricate dashboard widgets, responsive grids, canvas layers, and
             custom typography without visual artifacts.
           </p>
         </div>
 
+        {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PILLARS.map(({ number, title, category, description, icon: Icon }) => (
             <Capturable
               key={number}
               fileName={`html-shutter-pillar-${number}-${category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
               title={`${number} // ${category}`}
-              className="p-6 rounded-2xl border border-[var(--ds-line)] bg-[var(--ds-panel)] space-y-4 relative group hover:border-[var(--ds-lens)]/60 hover:shadow-md transition-all duration-200"
+              className="p-6 rounded-2xl border border-border-primary bg-bg-pane/80 backdrop-blur-sm space-y-3.5 hover:border-border-secondary hover:shadow-float transition-all group"
             >
               <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl border border-[var(--ds-line)] bg-[var(--ds-paper)] flex items-center justify-center text-[var(--ds-lens)] group-hover:scale-105 group-hover:border-[var(--ds-lens)]/40 group-hover:bg-[var(--ds-lens)]/10 transition-all duration-200">
-                  <Icon size={20} />
+                <div className="w-10 h-10 rounded-xl border border-border-primary bg-bg-sidebar flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                  <Icon size={18} />
                 </div>
-                <span className="text-[11px] font-mono font-bold tracking-wider px-2 py-0.5 rounded-md border border-[var(--ds-line)] bg-[var(--ds-paper)] text-[var(--ds-muted)] group-hover:text-[var(--ds-lens)] group-hover:border-[var(--ds-lens)]/30 transition-colors">
+                <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-accent px-2 py-0.5 rounded-full border border-border-primary bg-bg-sidebar">
                   {number} // {category}
                 </span>
               </div>
-              <h3 className="font-sans font-bold text-base sm:text-lg text-[var(--ds-ink)] leading-snug">
+              <h3 className="font-sans font-bold text-base sm:text-lg text-text-primary leading-snug">
                 {title}
               </h3>
-              <p className="text-xs sm:text-sm text-[var(--ds-muted)] leading-relaxed">
+              <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
                 {description}
               </p>
             </Capturable>
